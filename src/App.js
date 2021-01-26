@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login, selectUser } from "./features/userSlice";
+import { auth } from "./firebase";
+import Dashboard from "./Dashboard";
+import { useEffect } from "react";
+import Header from "./Header";
 
 function App() {
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(
+          login({
+            displayName: user.displayName,
+            email: user.email,
+          })
+        );
+      }
+      // else {
+      // }
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Header />
+        {!user ? (
+          <>
+            <SignIn />
+            <SignUp />
+          </>
+        ) : (
+          <Switch>
+            <Route path="/">
+              <Dashboard />
+            </Route>
+          </Switch>
+        )}
+      </Router>
     </div>
   );
 }

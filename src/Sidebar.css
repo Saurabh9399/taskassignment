@@ -1,0 +1,13 @@
+.sidebar{
+    flex:0.3 !important;
+    background: #1b43a6;
+    border-radius: 10px;
+}
+
+.sidebar > hr{
+    height:1px;
+    border:0;
+    background-color: lightgray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,36 @@
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.heading{
+    color:#1b43a6;
+    margin-bottom: 30px;
+}
+.signup__form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+.signup__form > button {
+  background-color: #1b43a6;
+  color: white;
+   border: 2px solid whitesmoke;
+
+}
+.signup__form > input {
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-bottom: 10px;
+   border: 2px solid whitesmoke;
+
+}
+.signup__form > label{
+    margin-bottom: 5px;
+}
+.forget{
+    color:#1b43a6;
+}

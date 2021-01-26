@@ -1,0 +1,7 @@
+.subComponent{
+    display: flex;
+
+}
+.subcomponent__icon{
+    margin-right: 5px;
+}
